@@ -3,7 +3,7 @@ import sys
 
 def get_fibonacci_partial_sum(from_, to):
     # write your code here
-    return 0
+    
 
 if __name__ == '__main__':
     input = sys.stdin.read();
