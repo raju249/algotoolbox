@@ -1,11 +1,37 @@
 # Uses python3
 import sys
 
-def get_optimal_value(capacity, weights, values):
-    value = 0.
-    # write your code here
+def arrange(val,wt,vlwt,n):
+    for i in range(n):
+        for j in range(i+1,n):
+            if(vlwt[i]<vlwt[j]):
+                temp=vlwt[i]
+                vlwt[i]=vlwt[j]
+                vlwt[j]=temp
+                temp=wt[i]
+                wt[i]=wt[j]
+                wt[j]=temp
+                temp=val[i]
+                val[i]=val[j]
+                val[j]=temp
 
-    return value
+def get_optimal_value(capacity, weights, values):
+    p=0;
+    n=len(values)
+    vlwt=[0 for x in range(n)]
+    for i in range(n):
+        vlwt[i]=values[i]/weights[i]
+    arrange(values,weights,vlwt,n)
+    for i in range(n):
+        if(capacity==0):
+            break
+        elif(weights[i]<=capacity):
+            p=p+values[i]
+            capacity=capacity-weights[i]
+        else:
+            p=p+(values[i]*(capacity/weights[i]))
+            capacity=0
+    return p
 
 
 if __name__ == "__main__":
