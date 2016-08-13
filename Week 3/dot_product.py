@@ -5,6 +5,8 @@ import sys
 def max_dot_product(a, b):
     #write your code here
     res = 0
+    a.sort(reverse=True)
+    b.sort(reverse=True)
     for i in range(len(a)):
         res += a[i] * b[i]
     return res
